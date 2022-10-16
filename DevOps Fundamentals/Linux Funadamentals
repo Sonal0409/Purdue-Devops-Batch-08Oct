@@ -1,0 +1,594 @@
+Steps to Connect to EC2 Instance:
+******************************************************************
+
+On windows Laptop
+
+> Open Cmd prompt
+> go to the directory where your key pair file → .pem file is present
+  
+ Execute Command :      cd downloads/
+
+Go back to AWS instance
+
+Copy the example command:
+
+ssh -i "15oct.pem" ec2-user@ec2-54-234-155-53.compute-1.amazonaws.com
+
+Give yes and press enter.
+
+
+On Mac laptop
+
+> Open terminal
+> go to the directory where your key pair file → .pem file is present
+  
+ Command :      cd downloads/
+
+Run this command, if necessary, to ensure your key is not publicly viewable.
+ chmod 400 <filename.pem>
+
+Example: chmod 400 16july.pem
+
+Copy the example command:
+
+ssh -i "16july.pem" ec2-user@ec2-54-234-155-53.compute-1.amazonaws.com
+
+Give yes and press enter.
+
+
+
+
+
+
+
+
+Linux Commands:
+******************************************************************
+
+
+1.	Clear the screen
+
+$ clear 
+
+
+
+
+2.	Print the working directory
+
+$ pwd
+
+
+
+3.	Create your own directory
+
+$ mkdir myfiles
+
+
+4.	Change the directory to myfiles
+
+ $ cd myfiles
+
+
+5.	Create an Empty file
+
+$ touch file1
+
+
+6.	To list the files in a directory
+
+	$ ls 
+
+         ***  $ ls -al
+
+-rw-rw-r-- 1 ec2-user ec2-user  0 Jul 17 15:30 file1
+
+File1 : file name
+15:30 : time file was created
+Jul 17: date
+0  : no content in the file
+ec2-user: this is the group name
+ec2-user: user that created the file
+rw-rw-r-- : permissions to the file
+
+R : read
+W: write
+X: execute 
+- : no permission
+Permission of the files are given as rwx
+
+Permissions of the file are given to 3 users
+
+Current user ⇒rw-
+Group users ⇒rw-
+Other users ⇒ r - -
+
+In the beginning if you 
+
+
+•	 : that means it is a file
+    d : that means it is a directory
+
+
+
+7.	Add content to an empty file 
+
+$ ls
+
+$ echo “This is my first file” > file1
+
+$ cat file1   ⇒ used to print the contents of the file
+
+
+
+8.	Append lines in to the file using echo
+
+$ echo “hello everyone” >> file1
+
+
+
+9.	Use Linux editors to create a file, add content to the file and save the file
+
+> vim editor  (all the devops tool training)
+
+This editor comes by default in the linux OS
+
+$ vim file2
+
+Press enter
+
+This command will open an editor file
+
+Press i  ⇒ to insert any data
+
+Enter this text as an example:
+
+DevOps is a set of practices that combines software development and IT operations. 
+It aims to shorten the systems development life cycle and provide continuous delivery with high software quality. 
+DevOps is complementary with Agile software development; several DevOps aspects came from the Agile way of working
+
+To Save the file : Press ESC key
+
+And enter 
+
+:wq!
+
+And press ENTER key to complete the operation
+
+Display contents of the file:
+
+$ cat file2
+
+Touch : it is a command that creates an empty file
+
+# touch file3.txt
+
+Echo : it is a command print any text on the command line or enter any text in the file
+
+Cat command to create files:
+*************************
+Creating small files with cat it often easier than opening a text editor such as nano , Vim
+
+To create a new file, use the cat command followed by the redirection operator (>) and the name of the file you want to create. Press Enter, type the text and once you are done, press the CRTL+D to save the file.
+In the following example, we are creating a new file named file1.txt:
+# cat > file1.txt
+Assignment:
+Suppose if a file named file1.txt is already present, Use the ‘>>’ operator to append the output to an existing file.
+# cat >> file1.txt
+ 
+
+
+
+
+10.	Make a copy of an exisitng file
+
+# cp sourcefile newfilename
+
+# cp file1 copiedfile
+
+# ls
+
+# cat copiedfile
+
+file content will be same
+
+	
+
+
+11.	Move file form 1 directory to another
+
+Lets move file1 from myfiles directory to tmp directory of linux OS
+
+	Syntax: mv filename /destainationpath
+
+# mv file1 /tmp/file1
+
+files will be not copied but moved to new directory or location
+
+
+
+12.	tail command
+
+# tail file1
+
+will print only last 10 lines of the file
+
+or
+
+# tail -n 5 file1 ==> print only last 5 lines of the file
+
+
+
+
+
+13.	head command
+
+Syntax: head filename
+
+will print only first 10 lines of the file
+
+# head -n 5 filename
+
+will print only first 5 lines of the file
+
+
+
+14.	Grep command
+
+Used to search for characters in a file and present it to you
+
+create a file 
+
+# vim filenew
+
+This is my file for devops
+created by sonal for devops
+sonal is teaching Linux
+We are learning Linux commands for devops
+
+Press ESC key and enter the below keys
+:wq!
+
+Execute command
+# grep devops filenew  ==> give only that content of file highlighting devops
+
+This is my file for devops
+created by sonal for devops
+We are learning Linux commands for devops
+
+
+
+
+15.	History command
+
+
+16.	What are the users in my operating system:
+$  cat /etc/passwd
+
+Create a new user in linux OS
+
+$ useradd alice
+
+You will get permission denial error
+
+You will have to become a super user (root user)
+
+How do you become a super user
+
+*** $ sudo su -     
+
+Now Create a new user in linux OS
+
+$ useradd alice
+
+alice:x:1001:1001::/home/alice:/bin/bash
+
+Alice : user
+X : no password has been set for user
+1001: user id
+1001: group id
+/home/alice : home directory
+/bin/bash: shell
+
+Remove write permission for current user
+
+$  chmod u-w newfile
+
+Add executable permission to current user
+
+$  chmod u+x newfile
+
+
+Remove or Add permission for users of same group
+
+$ chmod g+w newfile
+
+$  chmod g-w newfile
+
+Remove or Add permission for all other users
+
+$ chmod a+w newfile
+
+$  chmod a-w newfile
+
+U → file owner
+G -> group users
+A -> others (everbody else)
+
+
+Read ⇒ 4
+Write => 2
+Execute 1
+
+U → file owner  ⇒ 6
+G -> group users ⇒ 4
+A -> others (everybody else) => 4
+
+$  chmod 644 newfile
+
+
+
+**********************************************************
+More commands to practice:
+Sort commad
+
+this command will print the content of the file on the screen in a sorted manner
+
+cat command just displays the content of the file
+
+but sort command will print the content in sorted manner
+
+# sort file1
+
+# sort file2
+
+*************************
+
+execute 2 commands together 
+
+use | symbol  == this is pipeing symbol
+
+# sort file1 | less
+
+sort file content and displayes data as pages
+
+# sort file1 | grep sonal file2
+
+sort the contnet of the file and give lines that have above string
+
+example2:
+
+[ec2-user@ip-172-31-15-184 ~]$ sort file2
+created by sonal for devops
+ssh -i "02dec.pem" ec2-user@ec2-3-145-61-249.us-east-2.compute.amazonaws.com
+this file for devops
+we are learning linux
+we will need it for devops
+
+Example 3:===> 2 commands together
+[ec2-user@ip-172-31-15-184 ~]$ sort file2 | grep devops file2
+this file for devops
+created by sonal for devops
+we will need it for devops
+
+example 4: execute 2 commands 
+
+[ec2-user@ip-172-31-15-184 ~]$ sort file2 | grep devops file2 -n
+4:this file for devops
+5:created by sonal for devops
+7:we will need it for devops
+
+==> gives output with line number
+
+*********************************
+
+*********
+
+Create a user group
+
+what is a group ==> set of users form a group
+
+commad to create a group
+
+# groupadd purdue  ==> creates a new group
+
+see the group created
+
+# cat /etc/group  ==> shows information about all the groups, at end see you group name
+right now there is no user in it
+
+scroll up and see other groups like wheel which has user ec2-user
+wheel:x:10:ec2-user
+
+adm group which has user ec2-user
+
+
+adm:x:4:ec2-user
+
+extreme right is user and left is group name
+
+Also note that, when we just create a user, it also creates a group with same name as user
+hence you see alice and bob at the end
+
+****************
+
+Now add users to the created group== command ==> usermod
+
+
+# usermod -G purdue alice
+
+modify user and add alice user to group purdue
+
+-g ==> group 
+
+# cat /etc/group
+
+purdue:x:1003:alice
+
+***********************************
+
+list all users account using the /etc/passwd file
+
+$ cat /etc/passwd
+
+Each line in the file has seven fields as follows. For example, consider the following line:
+vnstat:x:131:137:vnstat daemon,,,:/var/lib/vnstat:/usr/sbin/nologin
+
+Where,
+
+vnstat – The user name or login name.
+x – Encrypted password is stored in the /etc/shadow file.
+131 – UID (user ID number)
+137 – Primary GID (group ID number)
+vnstat daemon – GECOS. It may includes user’s full name (or application name, if the account is for a program), building and room number or contact person, office telephone number, home telephone number and any other contact information.
+/var/lib/vnstat – Home directory for the user.
+/usr/sbin/nologin – Login shell for the user. Pathnames of valid login shells comes from the /etc/shells file.
+
+***************************************
+
+
+*********************
+
+limit outputs using the head command and tail command as follows:
+tail -5 /etc/passwd  -- show last 5 users
+head -5 /etc/passwd  -- shows top 5 users
+
+
+********************
+
+To list only usernames type the following awk command:
+
+$ awk -F':' '{ print $1}' /etc/passwd
+
+
+Sample outputs:
+
+root
+daemon
+bin
+sys
+sync
+games
+man
+lp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
