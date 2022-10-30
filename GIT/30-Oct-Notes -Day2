@@ -1,0 +1,135 @@
+Connect to EC2 instance 
+
+Execute command:
+
+# sudo su -
+
+
+Demo 1: Git configurations:
+
+
+They are Variables storing values that are to be used by GIT installed in your local machine
+
+Can be set in 3 ways
+
+Set the configurations as Local, global or System
+
+Variable/configuration that you will set in git
+
+user.name
+user.email
+
+git config
+
+If you want to set the variable only to single repository , you will set configuration as local
+
+Locally :
+
+$ git config --local user.name sonal0409
+
+After this if i commit in the repo, the author name will be sonal0409
+
+# cat .git/config
+
+Global:
+**************
+If you want to set same user.name and same email on every repository created by the OS user that your are logged in:
+
+$ git config --global user.name Name
+
+$ git config --global user.email emialid
+
+Example:
+
+$ git config --global user.name sonal0409
+
+$ git config --global user.email mittal.sonal04@gmail.com
+
+You can find the configuration at below location
+
+$ cat ~/.gitconfig
+
+Assignment/ Homework
+
+System:
+*****************
+
+If you want to set same user.name and same email on every repository created by any OS user that your are logged in:
+
+$ git config --system user.name sonal0409
+
+$ git config --system user.email mittal.sonal04@gmail.com
+
+
+Where is git going to check the system level configuration:
+
+$ cat /etc/gitconfig
+
+> In this file the system level variable and values will be set
+
+
+Where is git going to check the global level configuration:
+
+You the find the global configuration set in the file:
+
+$ cat ~/.gitconfig
+
+If config are in file cat .git/config  → then the config are local
+
+
+Where is git going to check the local level configuration:
+
+$ cat .git/config
+
+
+Command to edit set global configuration:
+
+git config --global --edit
+
+git config --global --edit
+
+>  unsetting our configuration file using flag --unset in git config --global
+command.
+Command used: git config --global --unset user.email
+
+ git config --global --unset user.name
+
+
+
+Scenario 2:
+*********************
+
+Take an existing file which is tracked
+
+$ make changes in the file
+
+$ git diff filename
+
+$ git diff index1.html
+
+
+Discard the changes that are in working directory permanently
+
+$ git restore index1.html
+
+OR
+
+$ git checkout -- index1.html
+
+Discard the changes from staging area back to working directory:
+
+$ git restore –staged index1.html
+
+OR
+
+$ git reset HEAD index1.html
+
+
+
+If a changes are committed on a file and you want to go back to previous version of the file then use revert command
+
+$ git revert commit id
+
+
+
+
