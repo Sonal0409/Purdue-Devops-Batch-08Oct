@@ -1,0 +1,91 @@
+
+
+to check which files are in the local repository:
+
+# git ls-files
+
+Demo2: 
+
+Take a file which is already tracked by git
+Edit the file and save the changes
+Now we have modifed an existed tracked file
+check the status of git
+> file is with status modified
+
+then commit the changes to the local reporistory
+
+there are 2 methods:
+
+> method1:
+
+ > git add file4
+ > git commit -m "modifications"
+
+> method2: Files with status modifed
+
+> git commit -a -m "modifcation of file"
+
+
+
+
+File is in working directory, already tracked by git
+
+
+file has some modifcation/changes
+
+but you dont like them
+
+discard the modifcation using git command
+
+
+git restore filename
+
+
+
+Changes are in stagging area
+
+
+file has some modifcation/changes added to the stagging area
+
+but you dont like them/ edit to be done on the file
+
+
+move the chnages back to working directory
+
+git restore --staged filename
+
+
+
+Revert command:
+
+this command will only work on a commit id
+
+so doenot work in stagging area
+
+sysntax of the command is:
+
+git revert <commitid>
+
+when you exeucte the command it willa sk for a message in an editor, why are you revert.. you  have to inset the message
+
+save the file
+
+with this operation a new commit id will be generated
+
+The new commit id represents that on the repository a file has been brought back to its older version/state
+
+
+for example:
+
+
+> explore how to compare the chnages in 2 commits
+
+> git log --oneline
+
+> explore various option related to log command
+
+ for eg: I want to only display 5 commits from my commit history
+
+  > git log -n 5 --online
+
+ > git log --full-history
