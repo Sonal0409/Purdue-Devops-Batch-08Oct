@@ -1,0 +1,259 @@
+﻿no_of_questions,question_title,question_description,option_1,option_2,option_3,option_4,correct_answers,solution
+Q1,What is the command to check the previously executed commands in Bash?,,archive,previous commands,history,None of the above,3,
+Q2,"Scenario:
+
+In Linux OS, suppose that you are working on processes. You want to learn about the commands that are available in this domain. ps is used to list all the processes. Consider a user “ABC” whose account is available in system. This user has started few processes in terminal.
+
+Problem Statement:
+
+Now, your task is to find those processes. After retrieving, kill all the processes belonging to that user.
+
+What are the commands we use to do the above process?
+
+1. pgrep -l -u ABC
+   pkill -u ABC
+
+2. pgrep -u ABC
+   pkill -u ABC
+
+3. pgrep -l ABC
+   pkill ABC
+
+4. pgrep ABC
+   pkill ABC",,1,2,3,4,1,
+Q3,"Scenario:
+
+Suppose XYZ is working on Linux OS. He/she has logged in as root user. For this, he/she has firstly decided to create a file namely “sample.txt” but it needs to be created using echo with “Hello” as content. After that, he/she wants to change the permissions of the file in such a way that the owner will have the access to read, write and execute it, any other usergroup can both write and read; and the remaining users/world will only have the access to read/view the file.
+
+Problem Statement:
+
+Based on the above information, help XYZ to do the task by picking up the suitable commands for below statements.
+
+1. Command for creating file?
+
+2. Command for changing permission?
+
+3. The structure of permission shown in terminal when verifying the file (in rwx format)?
+
+Options:
+
+1. echo ‘Hello’ > sample.txt
+   chmod 765 sample
+   -rwxrw-r-x
+
+2. echo ‘Hello’ sample.txt
+   chmod 7654 sample
+   -rwxrw-r-x
+
+3. echo ‘Hello’ > sample.txt
+   chmod 764 sample
+   -rwxrw-r--
+
+4. echo ‘Hello’ > sample.txt
+   chmod 765 sample
+   -rwxrw----",,1,2,3,4,1,
+Q4,"Scenario:
+
+In Linux environment, there are two kinds of processes based on their nature of running, one is foreground and the other is background. Now, you have logged in as root user. Also, there is a XYZ user who is parallelly working on the system. Now, you want to view all the processes started and currently running in the system by XYZ, along with their respective details.
+
+Problem Statement:
+
+From the below options, choose the correct one to do this task.
+
+1. ps -u XYZ
+
+2. top -p XYZ
+
+3. top -u XYZ
+
+4. get -u XYZ",,1,2,3,4,3,
+Q5,"Scenario:
+
+In Linux OS, assume that you are working on processes. The system will have the records of all processes running and stopped from user login. To view the processes, we use “ps” command. Among all the processes, some may take a huge amount of CPU utilization and memory.
+
+Problem Statement:
+
+Your task is to get the list of processes along with their memory consumption and CPU utilization. It should be sorted in descending order i.e. sorting should be done from high to low memory. What is the command that will be used to get the above task done?
+
+Options:
+
+1. ps pid,ppid,cmd,%mem,%cpu --sort=-%mem
+
+2. ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%mem
+
+3. ps -eo pid,ppid,cmd,%mem,%cpu
+
+4. Cannot be done.",,1,2,3,4,2,
+Q6,"Scenario:
+
+In Linux OS, there is a root user available by default. Now, you want to create a new user to give him/her the access to the working environment. The name of the user should be “linuxoperator” and password should be “newuser”.
+
+Problem Statement:
+
+1. What is the command to do the above process?
+
+2. Where can you check whether the account has been created or not?
+
+Options:
+
+1. sudo adduser linuxoperator
+   system settings > user accounts > linuxoperator
+
+2. sudo adduser linuxoperator -p newuser
+   system settings > user accounts > linuxoperator
+
+3. sudo add linuxoperator -p newuser
+   system settings > user accounts > linuxoperator
+
+4. sudo adduser linuxoperator
+   system settings > linuxoperator",,1,2,3,4,1,
+Q7,What are the problems faced in the waterfall model?,,Waterfall model is not ideal for complex projects where requirement alters frequently.,It needs lots of time to complete every stage.,Bug fix is tough to achieve.,All of the above,4,
+Q8,Which of the following step/steps of CI/ CD pipeline mainly focuses on instant responses to defect/ bugs and relaible and more stable releases?,,Continuous Integration,Continuous Delivery,Continuous Deployment,All of these,2,
+Q9,"An organisation wants to speed up its competitive efficiency , so the organisation decides to release features on daily or hourly basis. They also want to ensure the cross department coordination.  Which of the following steps of CI/CD pipeline can the organisation adapt to increase it's abilty?",,Continuous Integration,Continuous Delivery,Continuous Deployment,Continuous Development,3,
+Q10,"Which of the following statements represent the advantages of using Continuous Integration (CI) and Continuous Deployment (CD):
+
+1. Reduces overhead across the development and deployment process.
+2. Reduces the time and effort for integrations of different code changes
+3. Enables a quick feedback mechanism on every change",,1 and 2,2 and 3,1 and 3,All of these,3,
+Q11,"Which of the following command can be used to delete specific lines (i.e., 2 to 10) from a file named file.txt in Linux?",,"sed '2d,10d' file.txt","sed '2,10d' file.txt",sed '2d-10d' file.txt,sed '2-10d' file.txt,2,
+Q12,"Scenario:
+
+You are working on Linux environment. There are two directories available in the root. They are labelled as direc1, direc2. In direc1 directory, there are three files namely file1.txt, file2.txt, file3.txt whereas, the direc2 directory has a file named file1.txt. Now, you have to move the files from direc1 to direc2 but only those filenames which are absent in direc2. Hence, you should avoid overriding.
+
+Problem Statement:
+
+Which of the following commands is correct according to the above information?
+
+1. mv direc1/* to direc2/
+
+2. mv -u direc2/* to direc1/
+
+3. mv -u direc1 to direc2
+
+4. mv -u direc1/* to direc2/",,1,2,3,4,1,
+Q13,Continuous Monitoring does following?,,provides a container-centric management environment.,reduces organizations' downtime by increasing visibility into the applications and infrastructure.,manages and maintains the development and deployment of software systems and servers in any computational environment.,requires developers to integrate code into a shared repository several times a day.,2,
+Q14,Which is not a phase of the waterfall model?,,Requirements gathering,Design,Development,Continuous iterations,4,
+Q15,"Scenario:
+
+In Linux OS, assume that you are working on processes. As we know, there are two types of processes : foreground and background. For instance, consider a process which will run forever as a service, i.e it will not die.
+
+Problem Statement:
+
+What is such a process known as?",,Background,Foreground,Daemon,Zombie,3,
+Q16,Which is the first process executed by the kernel during booting of Linux operating system?,,scheduler,init,storage,network,2,
+Q17,"Which of these is the appropriate term for the following statement:
+
+It is a software engineering practice in which teams develop, build, test, and release software in short cycles.",,Continuous integration,Continuous delivery,Continuous deployment,None of these,2,
+Q18,Which of the following statement is not true for Cloud Computing?,,It enables the developers to get their applications to market quickly.,Cloud-based services are ideal for businesses with growing and fluctuating bandwidth demands.,It reduces the cost of managing and maintaining IT systems.,"It is not flexible, so it is difficult to scale up or scale down the cloud capacity.",4,
+Q19,"Before running the actual tests in a company with CI/CD pipeline, an automated code review of inspection is conducted on the code. The reviewing part includes checking the coding “grammar” standards, architectural layering adherence, code duplication, and many others. In which of the following step in CI/CD Pipeline is this process performed?",,Continuous Integration,Continuous Testing,Continuous Delivery,Continuous Inspection,4,
+Q20,In which step of SDLC Process early termination could be done?,,Feasibility study phase,Development phase,Testing phase,Deployment phase,1,
+Q21,How to create a file using the cat command in Linux?,,cat <[filename],cat >[filename],cat >>[filename],cat <<[filename],2,
+Q22,What is the command to print the first 5 lines of file.txt in Bash?,,top -5 file.txt,head -5 file.txt,header -5 file.txt,first -5 file.txt,2,
+Q23,"If Alice is required to integrate the Continuous Integration workflow in her software development process, then which of the following sequences of steps should she follow in order to complete this action:
+
+1. The Continuous Integration server detects that changes have occurred in the version control repository, so the Continuous Integration server retrieves the latest copy of the code from the repository and then executes a build script, which integrates the software.
+
+2. The developer commits the code to the version control repository. Meanwhile, the Continuous Integration server on the integration build machine polls source code repository for changes.
+
+3. The Continuous Integration server generates feedback of the build results to the specified project members.
+
+4. The Continuous Integration server continues to poll for changes in the version control repository and the whole process repeats.
+
+5. Unit tests are then carried out if the build of that project passes. If the tests are successful, the code is ready to be deployed to either the staging or production server.",,2 -> 3 -> 4 -> 1 -> 5,3 -> 2 -> 1 -> 5 -> 4,3 -> 1 -> 5 -> 2 -> 4,2 -> 1 -> 3 -> 5 -> 4,4,
+Q24,A company wants to improve its competitive edge by moving away from traditional waterfall methods so that engineers and developers are no longer bogged down with repetitive activities that are often highly dependent on the completion of other tasks. Which of the follwoing will be the best method to increase an organization’s ability to deliver applications and services faster?,,Agile,Continuous integration in Agile,DevOps and the CI/CD Pipeline,DevOps,3,
+Q25,"A company is using CI/CD Pipeline with Devops to increse efficiency of its software development process. Which of the following tests are conducted in Continuous Integration phase of this pipeline?
+
+Tests:
+
+1. Unit Tests
+
+2. Component Tests
+
+3. Peformance Tests
+
+4. Acceptance Tests
+
+5. Black Box Testing",,"1 , 2, 3 and 4","1, 2 and 4","1, 3, 4 and 5","1, 2, 3, 4 and 5",4,
+Q26,Artifact creation is one of the integral phases in the SDLC process?,,Correct,Incorrect,,,2,
+Q27," In Linux, what is the command to find the lines with ""@gmail"" pattern in file.txt?",,"cat ""@gmail"" file.txt","grep ""@gmail"" file.txt","sed ""@gmail"" file.txt","find ""@gmail"" file.txt",2,
+Q28,Which is the correct cat command to append the content of file1.txt to file2.txt?,,cat file1.txt >>file2.txt,cat file1.txt >file2.txt,cat file2.txt >>file1.txt,cat file2.txt >file1.txt,1,
+Q29,Which of the following option is the right way to find the 99th line of a file using only tail and head commands?,,tail -99 <file.name> | head -1,tail +99 <file.name> | head -1,head +99 <file.name> | tail -1,tail 99 <file.name> | head -1,2,
+Q30,Can we rename a file using the mv command in Linux?,,Yes ,No,,,1,
+Q31,"An organisation is using CI/CD Pipeline to improve its software development process. One of the key aspects of Continuous Integration in CI/ CD Pipeline is to see how the builds are performing, gathering important metrics, documenting those outcomes and generating continuous feedback through continuous builds. 
+
+What are the benefits of having these metrics in place?
+
+1. Investigate and improve any infrastructure resources to reduce the build duration
+
+2. Evaluating and improving the performance of these tests can dramatically reduce build duration.
+
+3. If developers are not committing code to a version control repository frequently, perform a high-level analysis of the integration build environment to determine the bottlenecks.",,1 and 2,2 and 3,1 and 3,All of these,4,
+Q32,Which is true for Agile methodology?,,"Design, code, test, and deployment are continuous.",Deployment is done at the end of each sprint.,It is good for those organizations which want their products in very less time.,Development and operation team work together and looks very closely into the work of one another.,2,
+Q33,"Scenario:
+
+Suppose you are working on Linux OS as user - “root”. You have created a file with name “Sample”. You should add permissions to the file, example: who can read, write and execute that file. Also, it should be a hidden file for some users and only the allowed users should be able to view the file. Now, there is a user “John” whom you need to give the same permissions to access the file, as a root user possesses.
+
+Problem Statement:
+
+1. How can you give access so that root user and “John” can only access it?
+
+2. How can you view the permissions of the file?
+
+Options:
+
+1. setfacl -m u:John:rw Sample
+   getfacl Sample
+
+2. setfacl -m u:John:rwx Sample
+   getfacl Sample
+
+3. setfacl -m u:John:rwx- Sample.txt
+   getfacl Sample.txt
+
+4. setfacl -m u:John:rwx- Sample
+   getfacl Sample",,1,2,3,4,2,
+Q34,"Scenario:
+
+In Linux, we consider each executed command in terminal as a process. Suppose, you logged in as root user and started few processes.
+
+Problem Statement:
+
+Now, you have to get their details like PID, UID, PPID, TTY, STIME, CMD, TIME by their PIDs.
+
+Which command is used to retrieve the details for processes with pids 1200, 1500, 1800?
+
+1. ps -ax 1200,1500,1800
+
+2. ps -f -p 1200, 1500, 1800
+
+3. ps -ppid 1200,1500,1800
+
+4. ps -u -pid 1200,1500,1800",,1,2,3,4,2,
+Q35,"In which of the following stages of CI/CD pipeline, change in code triggers a notification to the CI/CD tool which runs the corresponding pipeline?",,Build Stage,Test Stage,Source stage,Deploy Stage,3,
+Q36,The waterfall model is a sequential design process?,,Correct,Incorrect,,,1,
+Q37,What will be the correct sequence/approach to implement a project in DevOps?,,"Assess project, Create POC, Implement project.","Create POC, Develop the project, Deploy.","Create POC, Create Infrastructure, Deploy the project.","Assess project, Test project implementation, Deploy the project.",1,
+Q38,"Which of the following command is used to change the permission of only those files starting with the string emp and ending with digits either 1, 2, or 3?",,chmod u+x emp(1-3),chmod u+x emp*,chmod u+x emp*?,chmod u+x emp*[1-3],4,
+Q39,"Scenario:
+
+For each network in the linux environment, there will be huge data transactions happening. Let us consider a network “abc.com”. Now, your task is to get details about each and every packet transmitted in this network.
+
+Problem Statement:
+
+1. Which command is useful for getting details about the network?
+
+2. Which command is useful for getting details about the data that belongs to the network?
+
+Options:
+
+1. ping abc.com
+   traceroute abc.com
+
+2. traceroute abc.com
+   ping abc.com
+
+3. ping abc.com
+   traceroute -u abc.com
+
+4. traceroute -u abc.com
+   ping abc.com",,1,2,3,4,1,
+Q40,DevOps is which of the following?,,a technology followed in many small organizations for software development.,a tool that is used to create software in a frequent manner.,a non-continuous process for the development of a product in an organization.,a never-ending process of continuous improvement,4,
