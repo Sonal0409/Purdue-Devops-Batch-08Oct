@@ -1,0 +1,106 @@
+1. Setup the node
+
+> create an Ec2 server and connect to the node server
+
+JFYI --. changing the name of the node
+hostname JENKINSNODE
+sudo su -
+
+
+> Install java
+
+sudo amazon-linux-extras install java-openjdk11 -y
+
+> Install git
+
+yum install git -y
+
+> create a Remote root directory
+
+cd /tmp
+mkdir jenkinsdir
+
+PATH of the directory is /tmp/jenkinsdir
+
+> give read write execute permissions to this directory  --> /tmp/jenkinsdir
+
+	chmod -R 777 /tmp/jenkinsdir
+******************************************
+
+2. Setup the jenkins Controller
+
+> update the jenkins URL in configure system
+
+Manage Jenkins --> Configure System --> Scroll down to Jenkins URL --. update the value with latest jenkisn URL -> Save the changes
+
+> open the Agent port  [ this step is optional for linux agents and mandatory for windows agent]
+
+Manage Jenkins-->Configure Global Security--> scroll to agent section --> select randome--> save th changes
+
+> Add the node to the controller
+
+Manage Jenkins --> Manage nodes and clouds --> Add Node --> Give a name --> select Permanent agent--> press ok
+
+Description : Amazon linux2 server
+
+Number of executors: 1
+
+Remote root directory: /tmp/jenkinsdir
+
+Labels: linux_node
+
+Usage: Only build the jobs with matching label expression
+
+Launch method : Launch agents via SSH
+
+Host : agnets private ip -> 172.31.19.75
+
+Credentials --> click on ADD --> click on jenkins
+
+KIND: SSH username with private key
+
+ID : Agent1
+Description: Agent1
+
+Username: ec2-user
+
+Enter private key file
+
+press ok
+
+Select the credentials
+
+
+Host Key Verification Strategy : select the 4th option --> non verifying verification startegy
+
+
+
+
+Set up Windows Agent:
+
+On windows server 
+
+make sure java 11 is installed
+
+Create remote root directory
+
+C:\jenkinsdir
+
+2. Setup the jenkins Controller
+
+> update the jenkins URL in configure system
+
+Manage Jenkins --> Configure System --> Scroll down to Jenkins URL --. update the value with latest jenkisn URL -> Save the changes
+
+> open the Agent port  [ this step is optional for linux agents and mandatory for windows agent]
+
+Manage Jenkins-->Configure Global Security--> scroll to agent section --> select randome--> save th changes
+
+> Add the node to the controller
+
+Manage Jenkins --> Manage nodes and clouds --> Add Node --> Give a name --> select Permanent agent--> press ok
+
+
+
+
+
