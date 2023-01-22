@@ -1,0 +1,522 @@
+Recap:
+
+Intrduction Ansible - CM tool
+Ansible architecture
+ACM:
+ > Inventory --> host details
+ > Modules --> using modules ansible will apply chnages on required host server
+ > ansible.cfg --> ansible configuration file
+ > playbooks
+
+> Inventory Management
+Host file, add hosts, add groups
+ad-hoc commands
+
+
+
+Agenda:
+
+
+
+> What is a playbook, How write a playbook
+
+> Various sections/parts of a playbook
+
+> write playbook for tomcat deployment
+
+> write playbook for deployment on apache
+
+> varibales in Ansible playbook
+
+> handlers in Ansible
+
+
+> YAML basics
+
+YAML --> YAML Ain't Markup Language
+It is a human readable and human writable data format for sorting and transmitting information
+YAML is not a programming language
+Anyone can write YAML code, no special codign skills are required
+It is declarative in nature.
+YAML is like JSON or XML which saves data in a specific format
+Most of the devops tools like Ansible, docker, kubernetes all use YAML for writing code
+In case of YAML file, the key is always provided by the tool
+Value is to be given by the admin
+A key may have:
+- single value
+- list of values
+In YAML you can also parent and child relationship between the keys
+
+--- indicates the beginging of a YAML file. However it is not mandatory to give
+
+... indicates the end of a YAML file. Again it is not mandatory
+
+You can use various online lint apps to validate your YAML code
+
+In case of YAML there are 2 main elements:
+
+Object ==> key and value pair
+Array: which consist of ordered set of values
+
+
+
+YAML file with single values:
+
+
+---
+
+company: edureka
+trainer: Sonal
+Course: DevOps
+Module: Ansible
+Date: 21Jan
+Learners: 45
+Weekend: true
+version: null
+
+---
+
+# YAML file with list of values:
+
+company:
+  - edureka
+  - google
+  - Amazon
+Trainers:
+  - Sonal
+  - Jack
+  - Alice
+Time: ["8PM","8AM","8.30AM"]
+
+
+---
+
+# Create object in YAMl - pass  set of key-value pairs
+
+company:
+  - edureka
+  - google
+  - Amazon
+Trainers:
+  - name: Sonal
+    Phone: 34555435
+    email: sonal@gmail.com
+    trainings:
+     - Ansible
+     - Devops
+     - Docker
+  - name: Jack
+    phone: 234335
+	email: asfsf
+    trainings: AWS
+  - name: Alice
+    phone: 234335
+	email: asfsf
+    trainings: GCP
+
+=====================================================
+
+Basics of a Playbook
+
+Playbooks in Ansible are written in YAML
+A playbook name will always have an extension .yml or .YAML
+Ansible provides you the structure of a playbook which is in YAML format
+In ansible we cna exeucte one modeule on hosts using ad-doc command
+Ansible playbook is used to execute multiple modules one after the other on various hosts(part of inventory)
+To begin with: 
+Playbooks have 2 main section:
+ hosts & tasks
+
+hosts:
+> host servers where changes will be made
+> in hosts section we pass the group name or all groups that are mentioned in your inventory
+
+tasks:
+ > list of modules to be executed on the hosts
+ > Every task that we create will have a name
+ > write the name of the module that has be executed
+
+In order to execute the modules as a specific user, you will use a section called as become
+
+become = escalate the permission to execute tasks as a different user
+The value will always be true or false
+become_user = give the username using which tasks will be performed like root, jenkins, docker
+
+
+For example: The syntax of playbook is =>
+
+vim playbook1.yml
+
+---
+
+- hosts: all
+  tasks:
+  - name: my first task
+    command: para1=value para2=value
+  - name: mysecond task
+    copy: src=/tmp/file1 dest=/tmp
+
+
+But default tasks in the playbook will be executed by the user that you are logged on with on the ACM and host machine
+Which is ec2-user in our case
+However we can escalate the permissions and user who will exeucte the tasks using become plugin
+
+
+first Playbook:
+
+Connect to webserver hosts
+perform following tasks:
+1. Install tomcat
+
+module in ansible that is used to install a package
+ if your host servers are on type RED hat or centos
+
+module: yum
+
+if your host servers are on type ubuntu or debain
+
+module: apt or apt-get
+
+2. Start tomcatservice
+3. copy a war file in tomcat weapps directory
+4. restart tomcat service
+
+
+TASK [Gathering Facts]
+
+as an ec2-user it will connect to the servers in the group at the same time using SSH
+
+  hosts: webserver
+
+TASK [Install tomcat on host server]
+
+as an ec2-user ansible CM treid to perform the module yum so as to install tomcat
+
+
+
+I want ansible module that will fetch the file sample.war from below https web location and copy it on a host server directory
+
+https://tomcat.apache.org/tomcat-7.0-doc/appdev/sample/sample.war
+
+get_url is the module that will fetch file from remote location and copy it on destnation server
+
+
+Ad hoc command that will list files in this directory /usr/share/tomcat/webapps on host server
+
+ansible webserver -m command -a "ls /usr/share/tomcat/webapps"
+
+
+Playbook2:
+
+Connect to webserver hosts
+
+perform following tasks:
+
+1. Install httpd on host server
+2. Start httpd service
+3. copy a index.html file in httpd directory
+4. restart httpd service
+
+
+Variables:
+*******************
+
+Variables are temporary memory locations which are used to store data
+Variables are common concepts in Programming langauge, scripting language .
+Variables are also used in making ansible playbook robust and reusable
+
+Any variable will be having a name and a value to store
+
+for example:
+
+server=Ansible controller
+date=22-01-2023
+
+Variables are of 3 types in Ansible:
+===============================
+
+1. Special variables or magical Variables
+
+These are variables which are pre-defined in Ansible and have data stored by ansible itself
+As a user, you can not change the values or you can not store any data
+We will just make use of these variables and their corresponding values as is in playbook.
+
+These variables cannot be set directly by the user; Ansible will always override them to reflect internal state
+
+2. fact Variables
+
+These are the variables whicha re again created by ansible to store data abour every host
+
+gather_facts=false
+
+3. Custom Variables
+
+These are vairbale that are defined by the user
+These are most commonly used variable in ansible playbook
+These are declared and set by the user itself in the playbook
+
+syntax:
+
+varName: value
+
+But remember a custom variable:
+> cannot have names same as special varibales
+> cannot start with keyword like ansible or python like ansible_name, ansible_myvar
+> any variable cannot start with $
+
+A varibale name can be
+> a string eg: var,myvar, pkgName
+> can be alphanumeric  eg: var1, var2, var_123
+> can start with special chanracter other than $  eg : _var123, var-1234
+
+eg:
+
+color: red
+
+This format is incorrect:
+
+$var1: 123
+ansible_var: sonal
+
+Syntax to refer a varibale in ansible playbook
+
+{{varname}}
+
+In a playbook, we will define out variable in vars block
+
+==========================
+
+Demo 1:
+
+debug module: 
+> to print a user message
+
+Demo2:
+
+Use ansible special variables or fact variables in a playbook and print their values
+
+Special variable name and values are already set. we just need to use them
+
+How do we refer to the value of a variable in ansible playbook tasks:
+
+use following syntax:
+
+{{var_name}}
+
+ansible_os_family
+ansible_distribution
+ansible_architecture
+
+
+Demo 3:
+
+We will create a task which will execute a command
+Save the output of command in a variable --> register
+Print the variable value --> debug (var)
+
+
+Demo 4:
+
+Take a plybook, define variable and its value in the playbook itself -> use vars block
+
+---
+- name: HTTPD playbook
+  hosts: webserver
+  become: true
+  become_user: root
+  tasks:
+  - name: Install a httpd Package
+    yum: name=httpd state=present
+  - name: Start httpd service
+    service: name=httpd state=started
+  - name: copy code file from ACM to httpd server
+    copy: src=/etc/ansible/index.html dest=/var/www/html/
+  - name: Restart the httpd service
+    service: name=httpd state=restarted
+
+
+
+Demo 5: Defined a varibale and a value to it in the playbook, but pass a new value at runtime
+
+For this we make use of a flag -e or --extra-vars '{"var_name":"value"}'
+
+
+Demo 6: We have a playbook with variable defined
+Pass the value of variable at runtime by prompting it to user
+
+We use a section : vars_prompt
+
+
+Demo 7: Pass the value to the variables from another file.
+
+define variable in another yaml file
+
+in the plabook call the variables
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
