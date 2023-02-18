@@ -1,0 +1,123 @@
+
+
+Bind mounts :
+
+Any directory on the host machine can preserve data form container
+
+
+We have a directory on the host machine with some config.xml file in it
+The directory is present on the host machine
+you have to make the config.xml available in the container directory : /etc
+
+ 593  mkdir sonal
+  594  cd sonal
+  595  touch config.xml
+  596  ls
+  597  pwd
+  598  docker run -it --name newc1 -v /root/sonal/:/etc ubuntu
+
+
+============================================================
+
+Deploy an application on docker container and access the container from browser
+
+
+Devloper gives you source code : github
+
+
+https://github.com/Sonal0409/ecomm.git
+
+you need to take this html code and deploy on apache httpd server
+
+deployment env is docker container:
+
+IMAGE: httpd
+
+
+all code files to be made available on the container directory - /usr/local/apache2/htdocs/
+
+
+
+=====================================================
+
+Creating Custom Images:
+================================
+
+2 methods:
+
+> from an exiting container
+
+1. you can convert your container into an image   ==> docker commit the current container into an Image
+
+docker commit webapp  mywebimg:01
+
+2. ship the new custom image to dockerhub(REGISTRY)
+
+First change the image name to contain your repository name
+
+docker tag oldimgname sonal04/newimagename
+
+docker login
+
+docker push sonal04/newimagename
+
+3. others can pull the image and create the container
+
+docker pull imagename
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+> from a dockerfile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
