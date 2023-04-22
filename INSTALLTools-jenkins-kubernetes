@@ -1,0 +1,113 @@
+
+apt-get update
+
+Install git:
+=================
+
+apt-get install git -y
+
+Install Jenkins:
+=====================
+
+java - version
+
+sudo apt install default-jre
+
+sudo apt install default-jdk
+
+ sudo update-alternatives --config java
+
+Install jenkins:
+
+Alwyas take latest download link from jenkins website.
+
+Execute below commands:
+
+  curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
+Then add a Jenkins apt repository entry:
+    
+  echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+
+
+
+Update your local package index, then finally install Jenkins:
+
+
+    
+  sudo apt-get update
+ sudo apt-get install jenkins -y
+
+systemctl start jenkins
+============================================
+
+Install ANsible:
+=================
+
+sudo apt-get update
+sudo apt-get install software-properties-common -y
+sudo apt-add-repository --yes --update ppa:ansible/ansible
+sudo apt-get install ansible -y
+ansible --version
+
+==============================================
+
+Install Docker:
+
+sudo apt update
+
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+
+apt-cache policy docker-ce
+
+sudo apt install docker-ce -y
+
+sudo systemctl status docker
+
+================================================
+
+Install kubernetes
+=============================================
+
+## Install Docker,kubeadm,kubelet,kubectl
+
+sudo wget https://raw.githubusercontent.com/Sonal0409/Kubernetes-Setup/master/installK8S-v1-23.sh -P /tmp
+sudo chmod 755 /tmp/installK8S-v1-23.sh
+sudo bash /tmp/installK8S-v1-23.sh
+
+## Initialize kubernetes Master Node
+ 
+   sudo kubeadm init --ignore-preflight-errors=all
+
+   sudo mkdir -p $HOME/.kube
+   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+   ## install networking driver -- Weave/flannel/canal/calico etc... 
+
+   ## below installs calico networking driver 
+    
+sudo kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.1/manifests/calico.yaml 
+
+   # Validate:  kubectl get nodes
+
+Step2: On All Worker Nodes
+===================================
+## Install Docker,kubeadm,kubelet
+
+sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/scripts/installK8S-v1-23.sh -P /tmp
+sudo chmod 755 /tmp/installK8S-v1-23.sh
+sudo bash /tmp/installK8S-v1-23.sh
+
+## Run Below on Master Node to get join token 
+
+kubeadm token create --print-join-command 
+
+    copy the kubeadm join token from master & run it on all nodes
+
+    Ex: kubeadm join 10.128.15.231:6443 --token mks3y2.v03tyyru0gy12mbt \
+           --discovery-token-ca-cert-hash sha256:3de23d42c7002be0893339fbe558ee75e14399e11f22e3f0b34351077b7c4b56
